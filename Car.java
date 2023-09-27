@@ -1,7 +1,5 @@
 public class Car extends Vehicle {
 
-    String name = "Car";
-
     public Car() {
         super(100);
         System.out.println("Car created. " + getMilesToGo() + " miles to go!");
@@ -18,10 +16,6 @@ public class Car extends Vehicle {
         }
     }
 
-    public Car(String name) {
-        this.name = name;
-    }
-
     @Override
     public void setDriver(Driver driver) {
         if (driver.getAge() >= 18) {
@@ -32,9 +26,4 @@ public class Car extends Vehicle {
                     ", but must be 18 or older to drive a car.");
         }
     }
-    public String getName() {
-        return name;
-    }
-
-
 }
