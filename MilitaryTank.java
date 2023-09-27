@@ -10,14 +10,15 @@ public class MilitaryTank extends Vehicle {
         if (!hasDriver) {
             System.out.println("Tank didn't drive - there's no driver");
         } else {
-            System.out.println("Tank drove 5 miles - 1995 miles to go");
+            milesToGo -= 5;
+            System.out.println("Tank drove 5 miles - " + milesToGo + " miles to go");
         }
     }
 
     @Override
     public void setDriver(Driver driver) {
-        hasDriver = true;
         if (driver.getAge() >= 25) {
+            super.setDriver(driver);
             System.out.println("Driver changed to " + driver.getName());
         } else {
             System.out.println("Driver not changed! " + driver.getName() + " is " + driver.getAge() +

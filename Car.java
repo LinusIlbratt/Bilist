@@ -13,7 +13,8 @@ public class Car extends Vehicle {
         if (!hasDriver) {
             System.out.println("Car didn't drive - there's no driver");
         } else {
-            System.out.println("Car drove 10 miles - 90 miles to go");
+            milesToGo -= 10;
+            System.out.println("Car drove 10 miles - " + milesToGo + " miles to go");
         }
     }
 
@@ -23,8 +24,8 @@ public class Car extends Vehicle {
 
     @Override
     public void setDriver(Driver driver) {
-        hasDriver = true;
         if (driver.getAge() >= 18) {
+            super.setDriver(driver);
             System.out.println("Driver changed to " + driver.getName());
         } else {
             System.out.println("Driver not changed! " + driver.getName() + " is " + driver.getAge() +

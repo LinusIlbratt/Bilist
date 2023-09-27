@@ -2,7 +2,7 @@ import javax.xml.namespace.QName;
 
 public class Vehicle {
 
-    private int milesToGo;
+    protected int milesToGo;
     boolean hasDriver = false;
 
     public Vehicle() {
@@ -15,6 +15,7 @@ public class Vehicle {
         System.out.println("Default method print");
     }
     public void setDriver(Driver driver) {
+        this.hasDriver = true;
 
     }
     public int getMilesToGo() {
