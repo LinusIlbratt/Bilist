@@ -2,26 +2,43 @@ import javax.xml.namespace.QName;
 
 public class Vehicle {
 
-    protected int milesToGo;
-    boolean hasDriver = false;
+    protected String type;
+    private int milesToGo;
+    private int distanceDriven;
+    private int ageLimit;
+    private Driver driver;
 
-    public Vehicle() {
-        this.milesToGo = 0;
-    }
-    public Vehicle(int milesToGo) {
+
+    public Vehicle(String type, int milesToGo, int ageLimit, int distanceDriven) {
+        this.type = type;
         this.milesToGo = milesToGo;
+        this.ageLimit = ageLimit;
+        this.distanceDriven = distanceDriven;
+        System.out.println(type + " created. " + getMilesToGo() + " miles to go!");
     }
-    public void drive() {
-        System.out.println("Default method print");
-    }
-    public void setDriver(Driver driver) {
-        this.hasDriver = true;
 
+    public Driver getDriver(){
+        return driver;
     }
+
     public int getMilesToGo() {
         return milesToGo;
     }
-    public void setHasDriver(boolean hasDriver) {
-        this.hasDriver = hasDriver;
+
+    public void setDriver(Driver driver) {
+        if (driver.getAge() < ageLimit) {
+            System.out.println("Driver not changed! " + driver.getName() + " is " + driver.getAge() + ", but must be " + ageLimit + " or older to drive car");
+        } else {
+            this.driver = driver;
+            System.out.println("Driver changed to " + driver.getName());
+        }
+    }
+    public void drive() {
+        if (driver != null) {
+            milesToGo -= distanceDriven;
+            System.out.println(type + " drove " + distanceDriven + " miles - " + milesToGo + " miles to go");
+        } else {
+            System.out.println(type + " didn't drive - there is no driver!");
+        }
     }
 }
